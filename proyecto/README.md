@@ -37,11 +37,11 @@ Diseñar el **prototipo de una aplicación de escritorio para Windows de temáti
 
 ### Objetivos
 
-1. Crear en **FigJam** la siguiente estructura:
+1. Escribir en la **documentación del proyecto**, en Markdown:
    - Objetivos del proyecto (hipótesis, punto de partida e idea).
    - Análisis del público objetivo.
    - Estudio de la competencia.
-   - *User flow*.
+   - *User flow*, como diagrama **Mermaid**.
 2. Crear en **Figma** un **wireframe de baja fidelidad** con las pantallas que aparecen en el *user flow*, cada una en un *frame* de **1280 × 720** (el tamaño de la ventana) organizado en filas y columnas.
 3. Crear un **UI Kit** siguiendo el **diseño atómico**, con la siguiente estructura:
    - **Átomos:** tipografía, color, iconos, espaciado y rejilla, e imágenes.
@@ -63,9 +63,9 @@ Diseñar el **prototipo de una aplicación de escritorio para Windows de temáti
 
 Además del prototipo, hay que elaborar la **documentación del proyecto** en **Markdown**, en el propio repositorio de entrega, explicando las decisiones de diseño (ver [Documentación del proyecto](#3-documentación-del-proyecto) y [Entrega](#4-entrega)).
 
-### Figma y FigJam
+### Figma y Mermaid
 
-El proyecto se hace con **Figma** y **FigJam** (su pizarra colaborativa), con una cuenta gratuita. **Su manejo no se explica en clase: forma parte del proyecto aprender a usarlos**, como harás con cualquier herramienta nueva en tu trabajo. Para ello, consulta la documentación oficial, el Centro de ayuda de Figma (help.figma.com), y sus tutoriales.
+El prototipo se hace con **Figma**, con una cuenta gratuita. **Su manejo no se explica en clase: forma parte del proyecto aprender a usarlo**, como harás con cualquier herramienta nueva en tu trabajo. Para ello, consulta la documentación oficial, el Centro de ayuda de Figma (help.figma.com), y sus tutoriales.
 
 Estas son las funciones que tienes que usar (busca cada una por su nombre en la documentación):
 
@@ -78,10 +78,11 @@ Estas son las funciones que tienes que usar (busca cada una por su nombre en la 
 | ***Auto layout*** | Barras, formularios y listas que se reorganizan solos al añadir elementos o al cambiar el tamaño. |
 | **Prototipado:** conexiones, ***overlays*** y punto de inicio del flujo | Enlazar las pantallas y mostrar menús desplegables, menús contextuales y cuadros de diálogo sobre la ventana. |
 | **Modo presentación** y **compartir** | Probar el prototipo, hacer el test SUS y obtener el enlace que se entrega. |
-| **Copia local** del fichero | Descargar los ficheros `.fig` (Figma) y `.jam` (FigJam) que se suben al repositorio. |
-| FigJam: **notas adhesivas**, **secciones** y la plantilla ***Flow chart*** | La investigación (objetivos, público, competencia) y el *user flow*. |
+| **Copia local** del fichero | Descargar el fichero `.fig` que se sube al repositorio. |
 
 Pon nombres descriptivos a las páginas, los marcos, las capas y los componentes (`Ventana principal`, `Diálogo – Nueva reserva`, `Botón/Principal`…), no los que pone Figma por defecto (*Frame 1*, *Rectangle 2*): también se evalúa.
+
+El *user flow* se dibuja con **Mermaid**, un lenguaje para escribir diagramas como texto dentro de un fichero Markdown: GitHub lo muestra directamente como diagrama. Consulta su documentación (mermaid.js.org), en concreto la de los diagramas de flujo (*flowchart*), y usa su editor en línea (mermaid.live) para ver el resultado mientras escribes. El apartado [2.4](#24-navegación-arquitectura-de-la-información-y-user-flow) explica qué formas usar.
 
 
 ## 2. Pasos a seguir
@@ -92,7 +93,7 @@ A lo largo de este apartado se muestran ejemplos de un proyecto real, **Donar Ap
 
 > **Ojo:** Donar App es una aplicación **móvil**, mientras que tu proyecto es una **aplicación de escritorio para Windows** (ventana de 1280 × 720). Los ejemplos sirven para ver el proceso y el nivel de detalle esperado en cada fase, no el formato de las pantallas.
 
-> Los pasos 2.1 a 2.4 se documentan en **FigJam** (la pizarra colaborativa de Figma); los pasos 2.5 a 2.7, en **Figma**. Mapea y documenta todo desde el principio: cada decisión que tomes en las primeras fases justificará las de las siguientes.
+> Los pasos 2.1 a 2.4 se escriben en la [documentación del proyecto](#3-documentación-del-proyecto), en Markdown; los pasos 2.5 a 2.7 se hacen en **Figma**. Mapea y documenta todo desde el principio: cada decisión que tomes en las primeras fases justificará las de las siguientes.
 
 
 ### 2.1 Definir los objetivos del proyecto
@@ -155,26 +156,70 @@ Al analizar cada competidor conviene:
 
 El ***user flow*** (flujo de usuario) es el trayecto o proceso que realizan los distintos usuarios para llevar a cabo todas las tareas que permite el sistema. Se representa como un diagrama de flujo:
 
-- Utiliza la plantilla ***Flow chart*** de FigJam.
+- Escríbelo con **Mermaid** (diagrama `flowchart`) en la documentación del proyecto.
 - Utiliza **5 modelos de cajas**, cada una con una función:
 
 <p align="center">
   <img src="img/user-flow-cajas.jpg" alt="Los cinco elementos del user flow: óvalo naranja para comienzo y cierre, rombo amarillo para decisiones, paralelogramo azul para interacción con el usuario, rectángulo violeta para procesos y flecha para indicar la dirección" width="520">
 </p>
 
-| Forma | Significado |
-| --- | --- |
-| Óvalo (naranja) | **Comienzo y cierre** del flujo |
-| Rombo (amarillo) | **Decisión**: el flujo se divide según la respuesta (sí / no) |
-| Paralelogramo (azul) | **Interacción con el usuario**: el usuario introduce datos o elige una opción |
-| Rectángulo (violeta) | **Proceso** que realiza el sistema |
-| Flecha | **Dirección** del flujo |
+| Forma | Significado | En Mermaid |
+| --- | --- | --- |
+| Óvalo (naranja) | **Comienzo y cierre** del flujo | `A([Inicio])` |
+| Rombo (amarillo) | **Decisión**: el flujo se divide según la respuesta (sí / no) | `B{¿Datos válidos?}` |
+| Paralelogramo (azul) | **Interacción con el usuario**: el usuario introduce datos o elige una opción | `C[/Rellena el formulario/]` |
+| Rectángulo (violeta) | **Proceso** que realiza el sistema | `D[Guarda los datos]` |
+| Flecha | **Dirección** del flujo | `A --> C`; con la respuesta de una decisión, `B -- Sí --> D` |
+
+Los colores se definen una vez con `classDef` y se asignan a cada caja con `:::` seguido del nombre de la clase.
 
 **Ejemplo — *user flow*:**
 
 <p align="center">
   <img src="img/ejemplo-user-flow.jpg" alt="User flow de Donar App: desde el comienzo, pasa por decisiones (rombos amarillos), interacciones del usuario (paralelogramos azules) y procesos (rectángulos violetas) hasta el cierre del flujo" width="720">
 </p>
+
+**Ejemplo — *user flow* en Mermaid:** el alta de un socio en la aplicación de un club deportivo. Así se escribe en el fichero Markdown:
+
+````text
+```mermaid
+flowchart TD
+    A([Inicio]):::inicio --> B[/Pulsa Nuevo socio/]:::usuario
+    B --> C[/Rellena el formulario/]:::usuario
+    C --> D{¿Datos válidos?}:::decision
+    D -- No --> E[Muestra el error junto al campo]:::proceso
+    E --> C
+    D -- Sí --> F[Guarda el socio]:::proceso
+    F --> G[Muestra «Socio guardado»]:::proceso
+    G --> H([Fin]):::inicio
+
+    classDef inicio fill:#f6a04d,color:#000
+    classDef decision fill:#f7d354,color:#000
+    classDef usuario fill:#6fa8dc,color:#000
+    classDef proceso fill:#b4a7d6,color:#000
+```
+````
+
+Y así lo muestra GitHub:
+
+```mermaid
+flowchart TD
+    A([Inicio]):::inicio --> B[/Pulsa Nuevo socio/]:::usuario
+    B --> C[/Rellena el formulario/]:::usuario
+    C --> D{¿Datos válidos?}:::decision
+    D -- No --> E[Muestra el error junto al campo]:::proceso
+    E --> C
+    D -- Sí --> F[Guarda el socio]:::proceso
+    F --> G[Muestra «Socio guardado»]:::proceso
+    G --> H([Fin]):::inicio
+
+    classDef inicio fill:#f6a04d,color:#000
+    classDef decision fill:#f7d354,color:#000
+    classDef usuario fill:#6fa8dc,color:#000
+    classDef proceso fill:#b4a7d6,color:#000
+```
+
+Tu *user flow* recogerá todas las tareas de la aplicación, no solo una: el flujo principal y los caminos alternativos (un error en un formulario, la confirmación antes de borrar, una búsqueda sin resultados). Si queda muy grande, divídelo en varios diagramas, uno por tarea.
 
 Cada pantalla que aparezca en el *user flow* tendrá que diseñarse después en el wireframe, así que este diagrama es también la lista de pantallas del proyecto.
 
@@ -230,23 +275,28 @@ Las dos versiones tienen exactamente la misma estructura: el diseño en alta fid
 
 ## 3. Documentación del proyecto
 
-Junto al prototipo se elaborará la **documentación del proyecto**, que explica y justifica las decisiones tomadas. Se escribe en **Markdown** en el repositorio de entrega (ver [Entrega](#4-entrega)), con capturas de pantalla y, si ayudan, vídeos o GIF animados del prototipo. Debe incluir los siguientes apartados:
+Junto al prototipo se elaborará la **documentación del proyecto**, que explica y justifica las decisiones tomadas. Se escribe en **Markdown** en el repositorio de entrega, que ya trae una **plantilla**: un fichero por apartado en la carpeta `docs/`, con los encabezados y las tablas que hay que rellenar (ver [Entrega](#4-entrega)). Usa capturas de pantalla y, si ayudan, vídeos o GIF animados del prototipo. Estos son los apartados:
 
-| Apartado | Qué hay que incluir |
-| --- | --- |
-| **Temática y objetivos** | Descripción de la temática elegida, hipótesis de partida, propósito de la aplicación, datos que gestiona y metas que se quieren alcanzar. |
-| **Competencia y referentes** | Estudio de la competencia y de las aplicaciones de referencia. |
-| **Estándares de usabilidad y accesibilidad** | Estudio breve: identificar los principales estándares de usabilidad y accesibilidad que se aplican al proyecto (por ejemplo, las heurísticas de Nielsen, las pautas WCAG, las guías de diseño de aplicaciones de Windows o los estándares de facto de las aplicaciones de escritorio) y explicar por qué es importante seguirlos, indicando con algún ejemplo dónde se han aplicado en el prototipo. |
-| **Imágenes** | Selección de imágenes acordes a la temática. |
-| **Color dominante** | Un color dominante asociado a la temática, explicando por qué se ha elegido. |
-| **Paleta de colores** | Paleta construida a partir del color dominante: **monocromática, análoga o complementaria**. Explicar el uso de cada color y su proporción, con una captura de pantalla. |
-| **Tipografía** | Fuente elegida para el prototipo y por qué. Combinación armónica con una segunda fuente, aplicando distintos pesos para crear la jerarquía visual. |
-| **Contraste** | Dos colores para el texto y el fondo, calculando su **relación de contraste según WCAG 2**. |
-| **Equilibrio y tensión** | Varios ejemplos de **equilibrio visual y tensión compositiva** aplicados en el diseño, explicando por qué se han elegido esos elementos y qué significado aportan. |
-| **Menús** | Tipos de menú usados (principal y al menos otros dos), qué estándar o convención sigue cada uno (posición, orden de las opciones, agrupación, opción activa resaltada, atajos de teclado si los hay) y por qué se ha elegido cada tipo, con capturas. |
-| **Mensajes de la aplicación** | Inventario de los mensajes del prototipo (error, confirmación, éxito y estado vacío) con una captura de cada uno, explicando cómo se ha comprobado que son **adecuados en extensión y claridad** (por ejemplo, revisándolos con las heurísticas de Nielsen 1 y 9, o preguntando a los usuarios del test SUS si los entendieron). |
-| **Tamaño de la ventana y rejilla** | Ventana principal de 1280 × 720 y su versión maximizada a 1920 × 1080 (qué crece y qué se mantiene), tamaño de los cuadros de diálogo, espaciado en múltiplos de 8 y organización de cada pantalla en filas y columnas. |
-| **Pruebas de usabilidad y accesibilidad** | Resultados del test SUS con al menos dos usuarios (respuestas y puntuación de cada uno), conclusiones y mejoras aplicadas al prototipo a partir de ellas. Revisión básica de accesibilidad: simulación de daltonismo, tamaño de los elementos pulsables y uso con teclado (orden de tabulación, atajos y teclas de acceso). |
+| Fichero | Apartado | Qué hay que incluir |
+| --- | --- | --- |
+| `01-objetivos.md` | **Temática y objetivos** | Descripción de la temática elegida, hipótesis de partida, la idea, propósito de la aplicación, datos que gestiona y metas que se quieren alcanzar. |
+| `02-publico.md` | **Público objetivo** | Necesidades, preferencias y comportamientos de los usuarios, con al menos dos **personas tipo** y sus escenarios de uso. |
+| `03-competencia.md` | **Competencia y referentes** | Estudio de la competencia y de las aplicaciones de referencia, con las conclusiones que se aplican al diseño. |
+| `04-navegacion.md` | **Navegación y *user flow*** | Mapa de la aplicación (ventanas y vistas y qué contiene cada una), *user flow* en **Mermaid**, con las cinco formas del apartado 2.4, el flujo principal y los caminos alternativos, y la **tabla de pantallas**: todas las del prototipo, con su tipo, su tamaño, su captura y a cuáles lleva cada una. |
+| `05-estandares.md` | **Estándares de usabilidad y accesibilidad** | Estudio breve: identificar los principales estándares de usabilidad y accesibilidad que se aplican al proyecto (por ejemplo, las heurísticas de Nielsen, las pautas WCAG, las guías de diseño de aplicaciones de Windows o los estándares de facto de las aplicaciones de escritorio) y explicar por qué es importante seguirlos, indicando con algún ejemplo dónde se han aplicado en el prototipo. |
+| `06-ui-kit.md` | **UI Kit** | Capturas de los átomos, las moléculas (con sus estados) y los organismos, y los **valores exactos** de los colores, los estilos de texto y los espaciados, los mismos que los estilos o variables de Figma. |
+| `07-aspecto-visual.md` | **Imágenes** | Selección de imágenes acordes a la temática. |
+| `07-aspecto-visual.md` | **Color dominante** | Un color dominante asociado a la temática, explicando por qué se ha elegido. |
+| `07-aspecto-visual.md` | **Paleta de colores** | Paleta construida a partir del color dominante: **monocromática, análoga o complementaria**. Explicar el uso de cada color y su proporción, con una captura de pantalla. |
+| `07-aspecto-visual.md` | **Tipografía** | Fuente elegida para el prototipo y por qué. Combinación armónica con una segunda fuente, aplicando distintos pesos para crear la jerarquía visual. |
+| `07-aspecto-visual.md` | **Contraste** | Dos colores para el texto y el fondo, calculando su **relación de contraste según WCAG 2**. |
+| `08-composicion.md` | **Tamaño de la ventana y rejilla** | Capturas del wireframe con la rejilla visible. Ventana principal de 1280 × 720 y su versión maximizada a 1920 × 1080 (qué crece y qué se mantiene), tamaño de los cuadros de diálogo, espaciado en múltiplos de 8 y organización de cada pantalla en filas y columnas. |
+| `08-composicion.md` | **Equilibrio y tensión** | Varios ejemplos de **equilibrio visual y tensión compositiva** aplicados en el diseño, explicando por qué se han elegido esos elementos y qué significado aportan. |
+| `09-menus-acciones.md` | **Menús** | Tipos de menú usados (principal y al menos otros dos), qué estándar o convención sigue cada uno (posición, orden de las opciones, agrupación, opción activa resaltada, atajos de teclado si los hay) y por qué se ha elegido cada tipo, con la tabla de opciones y la captura de cada menú. |
+| `09-menus-acciones.md` | **Distribución de las acciones** | Dónde está cada acción de la aplicación (barra de menús, barra de herramientas, menú contextual, botones de comando) y su atajo de teclado. |
+| `09-menus-acciones.md` | **Controles** | Qué control recoge cada dato de los formularios y los diálogos, y por qué. |
+| `10-mensajes.md` | **Mensajes de la aplicación** | Inventario de los mensajes del prototipo (error, confirmación, éxito y estado vacío), con su texto exacto y una captura de cada uno, explicando cómo se ha comprobado que son **adecuados en extensión y claridad** (por ejemplo, revisándolos con las heurísticas de Nielsen 1 y 9, o preguntando a los usuarios del test SUS si los entendieron). |
+| `11-pruebas.md` | **Pruebas de usabilidad y accesibilidad** | Resultados del test SUS con al menos dos usuarios (respuestas y puntuación de cada uno), conclusiones y mejoras aplicadas al prototipo a partir de ellas, con capturas de antes y después. Revisión básica de accesibilidad: simulación de daltonismo, tamaño de los elementos pulsables y uso con teclado (orden de tabulación, atajos y teclas de acceso). |
 
 ### El test SUS
 
@@ -290,21 +340,33 @@ Fíjate sobre todo en que cada decisión va acompañada de su **porqué**: eso e
 
 ## 4. Entrega
 
-El proyecto se entrega en el **repositorio de entrega** de la tarea, con esta estructura:
+El proyecto se entrega en el **repositorio de entrega** de la tarea, que ya contiene la **plantilla** de la documentación con esta estructura:
 
 ```text
-README.md                ← la documentación del proyecto, con índice
+README.md                ← portada: nombre, temática, enlace al prototipo e índice
+docs/                    ← la documentación, un fichero por apartado
+├── 01-objetivos.md
+├── …
+└── 11-pruebas.md
 figma/
-├── <nombre>.fig         ← wireframe, UI Kit y prototipo (copia local de Figma)
-└── <nombre>.jam         ← investigación y user flow (copia local de FigJam)
-img/                     ← capturas de pantalla
+└── <nombre>.fig         ← wireframe, UI Kit y prototipo (copia local de Figma)
+img/
+├── wireframe/           ← cada frame del wireframe
+├── pantallas/           ← cada frame del prototipo
+├── ui-kit/              ← átomos, moléculas y organismos
+├── menus/               ← cada menú desplegado
+├── mensajes/            ← cada mensaje
+└── pruebas/             ← revisión de accesibilidad y antes y después de las mejoras
 video/                   ← vídeos o GIF del prototipo (opcional)
 ```
 
-- **`README.md`:** empieza con el nombre y la temática de la aplicación, el **enlace al prototipo** y un **índice** enlazado a los apartados de la [documentación](#3-documentación-del-proyecto). Si queda muy largo, puedes dividirlo en varios ficheros Markdown dentro de una carpeta `docs/`, enlazados desde el índice.
+- **Plantilla:** rellénala sin cambiar los nombres de los ficheros, los encabezados ni las columnas de las tablas. Puedes añadir texto, apartados y filas. Así el diseño se puede revisar en el repositorio sin abrir Figma.
+- **`README.md`:** empieza con el nombre y la temática de la aplicación, el **enlace al prototipo** y un **índice** enlazado a los ficheros de `docs/`.
 - **Enlace al prototipo:** el del **modo presentación**, empezando en la ventana principal y con acceso para **cualquiera con el enlace**. Compruébalo en una ventana privada del navegador, sin iniciar sesión: si no se abre, no se puede evaluar.
-- **Ficheros de Figma y FigJam:** la copia local de cada uno, con la versión final. No modifiques el diseño en Figma después de entregar: el enlace al prototipo muestra siempre la versión actual, y tiene que coincidir con la del repositorio.
-- **Imágenes y vídeos:** cada imagen con su **texto alternativo** y un tamaño en el que se lea bien. Investiga cómo se muestra un vídeo o un GIF en un `README.md` de GitHub y procura que pesen poco (vídeos cortos, de unos segundos, que muestren un recorrido concreto).
+- **Fichero de Figma:** la copia local, con la versión final. No modifiques el diseño en Figma después de entregar: el enlace al prototipo muestra siempre la versión actual, y tiene que coincidir con la del repositorio.
+- **Capturas de las pantallas:** exporta desde Figma **cada frame** del prototipo a **PNG a 1x**, para que la imagen tenga el tamaño real de la pantalla (1280 × 720, 1920 × 1080 o el del diálogo). Guárdalas en `img/pantallas/` con el número y el nombre de la tabla de pantallas, en minúsculas y con guiones (`01-ventana-principal.png`), y usa ese mismo nombre para el frame en Figma. Haz lo mismo con los frames del wireframe en `img/wireframe/`.
+- **Resto de capturas:** cada menú desplegado, en `img/menus/`; cada mensaje, en `img/mensajes/`; el UI Kit, en `img/ui-kit/`; las de la revisión de accesibilidad y las de antes y después de cada mejora, en `img/pruebas/`, y las demás, en `img/`.
+- **Imágenes y vídeos:** cada imagen con su **texto alternativo** y un tamaño en el que se lea bien. Investiga cómo se muestra un vídeo o un GIF en un fichero Markdown de GitHub y procura que pesen poco (vídeos cortos, de unos segundos, que muestren un recorrido concreto).
 - **No se entrega un PDF aparte.** Si además quieres tener la documentación en PDF, genérala a partir del propio repositorio (investiga qué herramientas convierten Markdown en PDF) y añádela; lo que se corrige es el repositorio.
 
 
@@ -312,7 +374,7 @@ video/                   ← vídeos o GIF del prototipo (opcional)
 
 Antes de dar el proyecto por terminado, comprueba que incluye todo lo siguiente:
 
-- [ ] FigJam con objetivos (hipótesis, punto de partida e idea), público objetivo, competencia y *user flow*.
+- [ ] Documentación con los objetivos (hipótesis, punto de partida e idea), el público objetivo con personas tipo, la competencia y el *user flow* en Mermaid.
 - [ ] Wireframe de baja fidelidad en Figma con todas las pantallas del *user flow*, en *frames* de 1280 × 720 organizados en filas y columnas.
 - [ ] Temática aprobada por el profesor y de gestión de datos, con al menos dos entidades relacionadas, listado con búsqueda, alta, edición y borrado, y datos que se puedan resumir en un informe.
 - [ ] UI Kit con átomos (tipografía, color, iconos, espaciado, imágenes), moléculas (controles) y organismos.
@@ -323,10 +385,12 @@ Antes de dar el proyecto por terminado, comprueba que incluye todo lo siguiente:
 - [ ] Mensajes de error, confirmación, éxito y estado vacío en el prototipo.
 - [ ] Estudio breve de los estándares de usabilidad y accesibilidad aplicados.
 - [ ] Test SUS con al menos dos usuarios, con su puntuación, conclusiones y mejoras, y revisión básica de accesibilidad.
-- [ ] Documentación en Markdown en el `README.md` del repositorio, con índice y todos los apartados de la [documentación](#3-documentación-del-proyecto).
-- [ ] Copias locales de Figma (`.fig`) y FigJam (`.jam`) en `figma/`, con la versión final.
+- [ ] Plantilla de la documentación rellena: `README.md` con el enlace al prototipo y el índice, y todos los ficheros de `docs/` con sus tablas completas.
+- [ ] Copia local de Figma (`.fig`) en `figma/`, con la versión final.
+- [ ] Cada frame del prototipo exportado a PNG a 1x en `img/pantallas/` (y los del wireframe en `img/wireframe/`), con el número y el nombre de la tabla de pantallas.
+- [ ] Captura de cada menú desplegado y de cada mensaje, en `img/menus/` y `img/mensajes/`.
 - [ ] Enlace al prototipo en modo presentación, comprobado en una ventana privada sin iniciar sesión.
-- [ ] Páginas, marcos, capas y componentes con nombres descriptivos.
+- [ ] Páginas, marcos, capas y componentes con nombres descriptivos, y los frames con el mismo nombre que en la tabla de pantallas.
 
 
 <br>
