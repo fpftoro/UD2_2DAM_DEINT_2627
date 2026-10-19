@@ -1,6 +1,5 @@
 # Rúbrica de evaluación del proyecto
 
-> **Borrador provisional.** Pendiente de revisión.
 
 <br>
 
